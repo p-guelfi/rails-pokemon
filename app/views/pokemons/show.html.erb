@@ -1,0 +1,7 @@
+  <div class="pokemon-details">
+    <%= link_to "< Pokédex", root_path %>
+    <p>You hear a rustle in the tall grass...A wild Pokémon appears!</p>
+    <h1><%= @pokemon.name %></h1>
+    <span class="element-type"><%= @pokemon.element_type %></span>
+    <%= cl_image_tag @pokemon.photo.key %>
+  </div>

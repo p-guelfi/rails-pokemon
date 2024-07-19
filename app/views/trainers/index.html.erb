@@ -1,0 +1,13 @@
+<h1>Let's Get Training</h1>
+
+<%= link_to "Pokédex", root_path %>
+
+<% @trainers.each do |trainer| %>
+  <div class="trainer-card">
+    <%= cl_image_tag trainer.photo.key %>
+    <h2><%= link_to trainer.name, trainer %></h2>
+    <p class="age"><%= trainer.age %> years old</p>
+  </div>
+<% end %>
+
+<%= link_to "New Trainer", new_trainer_path, class: "btn btn-primary" %>

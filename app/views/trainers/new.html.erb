@@ -1,0 +1,8 @@
+<h1>Sign up to train</h1>
+
+<%= simple_form_for @trainer, html: { multipart: true } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :photo %>
+  <%= f.button :submit %>
+<% end %>

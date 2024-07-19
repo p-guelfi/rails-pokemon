@@ -1,0 +1,18 @@
+<%= link_to "< Trainers", trainers_path %>
+
+<%= cl_image_tag @trainer.photo.key %>
+
+<h1><%= @trainer.name %> is going to catch 'em all!</h1>
+
+<p>They are <%= @trainer.age %> years old.</p>
+
+<h2>Their Pokémon</h2>
+
+<% @trainer.pokeballs.each do |pokeball| %>
+  <div class="pokemon-card">
+    <%= cl_image_tag pokeball.pokemon.photo.key %>
+    <h3><%= link_to pokeball.pokemon.name, pokeball.pokemon %></h3>
+    <span class="element-type"><%= pokeball.pokemon.element_type %></span>
+    <p>Caught on <%= pokeball.caught_on.strftime("%B %d, %Y") %> at <%= pokeball.location %></p>
+  </div>
+<% end %>

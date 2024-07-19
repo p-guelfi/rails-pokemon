@@ -1,0 +1,26 @@
+<h1>Pokédex</h1>
+
+<%= link_to "Trainers", trainers_path %>
+<%= link_to "Random Pokémon", random_pokemons_path %>
+
+<%= form_with url: root_path, method: :get do |f| %>
+  <div class="input-group">
+    <div class="form-floating">
+      <%= f.text_field :search, placeholder: "Jigglypuff", class: "form-control" %>
+      <%= f.label :search, "Search for a Pokémon" %>
+    </div>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<% @pokemons.each do |pokemon| %>
+  <div class="pokemon-card">
+    <%= cl_image_tag pokemon.photo.key %>
+    <h2><%= link_to pokemon.name, pokemon %></h2>
+    <span class="element-type"><%= pokemon.element_type %></span>
+  </div>
+<% end %>
+
+<% if @pokemons.empty? %>
+  <p>There are no Pokémon in the Pokédex for your search.</p>
+<% end %>
