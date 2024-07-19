@@ -1,7 +1,21 @@
+<header class="header">
+  <%= link_to "< Pokédex", root_path %>
+</header>
+
+<div class="two-columns">
   <div class="pokemon-details">
-    <%= link_to "< Pokédex", root_path %>
     <p>You hear a rustle in the tall grass...A wild Pokémon appears!</p>
-    <h1><%= @pokemon.name %></h1>
-    <span class="element-type"><%= @pokemon.element_type %></span>
-    <%= cl_image_tag @pokemon.photo.key %>
+    <%= render @pokemon %>
   </div>
+
+  <div>
+    <h2>Do you dare to catch this Pokémon?</h2>
+
+    <%= simple_form_for [@pokemon, @pokeball] do |f| %>
+      <%= f.association :trainer, label: "Who's trying their luck?" %>
+      <%= f.input :location, label: "Where are you?" %>
+      <%= f.input  :caught_on, html5: true, label: "When?" %>
+      <%= f.submit "Catch!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

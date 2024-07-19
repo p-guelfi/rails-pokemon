@@ -1,26 +1,27 @@
-<h1>Pokédex</h1>
+<header class="header">
+  <h1>Pokédex</h1>
 
-<%= link_to "Trainers", trainers_path %>
-<%= link_to "Random Pokémon", random_pokemons_path %>
+  <%= link_to "Trainers", trainers_path %>
+  <%= link_to "Random Pokémon", random_pokemons_path %>
 
-<%= form_with url: root_path, method: :get do |f| %>
-  <div class="input-group">
-    <div class="form-floating">
-      <%= f.text_field :search, placeholder: "Jigglypuff", class: "form-control" %>
-      <%= f.label :search, "Search for a Pokémon" %>
+  <%= form_with url: root_path, method: :get do |f| %>
+    <div class="input-group">
+      <div class="form-floating">
+        <%= f.text_field :search, placeholder: "Jigglypuff", class: "form-control", value: params[:search] %>
+        <%= f.label :search, "Search for a Pokémon" %>
+      </div>
+      <%= f.submit "Search", class: "btn btn-primary" %>
     </div>
-    <%= f.submit "Search", class: "btn btn-primary" %>
-  </div>
-<% end %>
+  <% end %>
+</header>
 
-<% @pokemons.each do |pokemon| %>
-  <div class="pokemon-card">
-    <%= cl_image_tag pokemon.photo.key %>
-    <h2><%= link_to pokemon.name, pokemon %></h2>
-    <span class="element-type"><%= pokemon.element_type %></span>
+<% if @pokemons.exists? %>
+  <div class="grid">
+    <% @pokemons.each do |pokemon| %>
+      <%= render pokemon %>
+    <% end %>
   </div>
-<% end %>
 
-<% if @pokemons.empty? %>
-  <p>There are no Pokémon in the Pokédex for your search.</p>
+<% else @pokemons.empty? %>
+  <p class="text-secondary">There are no Pokémon in the Pokédex for your search. Maybe we're not evolved enough 🙈</p>
 <% end %>
