@@ -13,6 +13,15 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 # Keep the last 5 releases to save disk space
 set :keep_releases, 5
 
+set :default_env, {
+  'CLOUDINARY_URL' => 'cloudinary://866611883174648:1IncUX5YSql50IXg0qEU1oXzDIQ@dtbqxujlt',
+  'DATABASE_URL' => 'postgresql://deploy:pg123456@127.0.0.1/app1',
+  'RAILS_MASTER_KEY' => '6caabca372119776e0847f3430b2424f',
+  'SECRET_KEY_BASE' => '49b4669de6edc62aef682a43cfb0239be98e03dd2bbeb3c8ee62de007b91cb6db071a522ba6d90502c797a9f34a53da3327b99e43832b59fe17bb28021aa4c77'
+}
+
+append :linked_files, '.rbenv-vars'
+
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
