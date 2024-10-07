@@ -1,8 +1,18 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.19.1"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, "app1"  # Your application name
+set :repo_url, "https://github.com/p-guelfi/app1.git"  # Your GitHub repository URL
+
+# Deploy to the specified directory
+set :deploy_to, "/home/deploy/#{fetch :application}"
+
+# Specify linked directories to be shared between releases
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+
+# Keep the last 5 releases to save disk space
+set :keep_releases, 5
+
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
