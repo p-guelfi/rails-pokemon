@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
-  database: rails_pokemon_production
-  username: rails_pokemon
-  password: <%= ENV["RAILS_POKEMON_DATABASE_PASSWORD"] %>
+  database: app1
+  username: deploy
+  password: pg123456
+  host: 147.79.75.87
