@@ -21,6 +21,8 @@ set :default_env, {
 }
 
 append :linked_files, '.rbenv-vars'
+append :linked_files, 'config/master.key'
+
 
 
 # Default branch is :master
