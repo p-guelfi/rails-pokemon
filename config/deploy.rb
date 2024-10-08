@@ -20,7 +20,6 @@ set :default_env, {
   'SECRET_KEY_BASE' => '49b4669de6edc62aef682a43cfb0239be98e03dd2bbeb3c8ee62de007b91cb6db071a522ba6d90502c797a9f34a53da3327b99e43832b59fe17bb28021aa4c77'
 }
 
-append :linked_files, '.rbenv-vars'
 append :linked_files, 'config/master.key'
 
 
